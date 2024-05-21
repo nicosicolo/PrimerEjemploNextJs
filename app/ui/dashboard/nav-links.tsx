@@ -21,6 +21,7 @@ const links = [
 ];
 
 export default function NavLinks() {
+  //usePathname es un hook que me permite saber leer el pathname actual de la url.
   const pathname = usePathname(); //El pathname es un concepto que solo podemos recuperar en el cliente.
   return (
     <>
@@ -30,6 +31,11 @@ export default function NavLinks() {
           // Cambiando la etiqueta <a></a> por la etiqueta Link evito que se re renderice toda la pagina.
           // Con Link renderizo unicamente lo que cambia.
           <Link
+
+          //Link realiza code splitting automatico: cuando entramos en dashboard solo carga el primer
+          //componente del dashboard, sin cargar invoices y customers.
+          //Se hace una precarga del recurso por si tiene que renderizarlo.
+
             key={link.name}
             href={link.href}
             className={`flex h-[48px] grow items-center justify-center 
