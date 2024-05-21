@@ -1,3 +1,3 @@
 export default function InvoicesPage() {
-    return <p>Dashboard / Invoices</p>
+    return <p>Esta es la pagina de Invoices</p>
 }

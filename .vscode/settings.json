@@ -1,5 +1,5 @@
 {
-    "editor.cursorBlinking": "phase",
-    "editor.cursorWidth": 4,
+    "editor.cursorBlinking": "expand",
+    "editor.cursorWidth": 2,
     "editor.cursorStyle": "line"
 }
