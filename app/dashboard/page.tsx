@@ -47,6 +47,7 @@ export default async function DashboardPage() {
             <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
                 {/* Al cargar información de manera asíncrona, mientras estoy esperando que se cargue la info, 
                 suspendo al componente y agrego un fallback hasta que la informacion este disponible para ser renderizada. */}
+                {/* Recordemos que todo este html se renderiza en el servidor y luego se lo envia al cliente */}
                 <Suspense fallback={<RevenueChartSkeleton/>}> {/* Envolvemos renevenueChart en el componente suspense de react para el streaming html. 
                 Con suspense esperamos y va a ser asincrono que se cargue la informacion de revenue.*/}
                     <RevenueChart />
