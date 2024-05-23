@@ -17,7 +17,7 @@ export default async function RevenueChart() {
   //Ya no es necesario hacer el fetching de datos a nivel de pagina, sino que se puede a nivel de componente
   //Puedo hacer fetching de datos en paralelo entre distintos componentes granulares que forman parte de la pagina.
   //Aca esta el verdadero valor de react: puedo mantener partes estaticas del sitio ya cargadas mientras puedo espero que se realice el fetching paralelo de datos entre los componentes
-  //Objetivo de las SPA: navegaciones del lado del cliente mas rapidas.
+  //Objetivo de las SPA: navegaciones del lado del cliente mas rapidas, evitando tener que recargar toda la pagina.
 
   const revenue = await fetchRevenue();
 
