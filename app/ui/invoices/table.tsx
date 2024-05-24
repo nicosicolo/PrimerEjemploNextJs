@@ -11,7 +11,8 @@ export default async function InvoicesTable({
   query: string;
   currentPage: number;
 }) {
-  const invoices = await fetchFilteredInvoices(query, currentPage);
+  //En este componente realizo el fetching de datos sin compremeter el renderizado completo de la pagina
+  const invoices = await fetchFilteredInvoices(query, currentPage); 
 
   return (
     <div className="mt-6 flow-root">

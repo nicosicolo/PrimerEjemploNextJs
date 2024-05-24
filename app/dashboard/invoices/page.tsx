@@ -6,19 +6,38 @@ import { lusitana } from '@/app/ui/fonts';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
  
-export default async function Page() {
+export default async function Page({
+  searchParams
+  }: {
+    searchParams?: {
+      query?: string,
+      page?: string
+    }
+  }
+) {
+
+  /* Tomo query y currentPage desde los search params de la url*/
+
+  const query = searchParams?.query || ''
+  const currentPage = Number(searchParams?.page) || 1
+
+  console.log(searchParams) //Desde las search params nos llegan las props y vamos a poder hacer el fetching de datos directo desde la url.
+
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">
         <h1 className={`${lusitana.className} text-2xl`}>Invoices</h1>
       </div>
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
-        <Search placeholder="Search invoices..." />
+        <Search placeholder="Search invoices..." /> {/* Aca genero los search params para hacer el fetching de datos */}
         <CreateInvoice />
       </div>
-      {/*  <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
-        <Table query={query} currentPage={currentPage} />
-      </Suspense> */}
+       <Suspense 
+        key={query + currentPage} /* Cada vez que cambia este key fuerzo el re renderizado del fallback (en teoria el fallback se renderiza una unica vez) */
+        fallback={<InvoicesTableSkeleton />}
+      >
+        <Table query={query} currentPage={currentPage} /> {/* En este componente es donde se hace el fetching de datos desde la url. Es el unico componente que se re renderiza con cada input nuevo */}
+      </Suspense>
       <div className="mt-5 flex w-full justify-center">
         {/* <Pagination totalPages={totalPages} /> */}
       </div>
