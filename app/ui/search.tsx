@@ -1,8 +1,10 @@
-'use client';
+'use client'; //use client porque tiene interactividad con el usuario.
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
+
+const WAIT_BETWEEN_CHANGES = 300
 
 export default function Search({ placeholder }: { placeholder: string }) {
 
@@ -26,9 +28,10 @@ export default function Search({ placeholder }: { placeholder: string }) {
     } else { //En cambio, si el input esta vacío, borra el contenido del campo search
       params.delete('query');
     }
+    params.set('page', '1');
     
     replace(`${pathname}?${params.toString()}`);//Actualizo los params manteniendo el path.
-  }, 300)
+  }, WAIT_BETWEEN_CHANGES)
 
 
   return (

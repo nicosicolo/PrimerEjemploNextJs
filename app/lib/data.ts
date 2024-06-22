@@ -124,7 +124,7 @@ export async function fetchFilteredInvoices(
   }
 }
 
-export async function fetchInvoicesPages(query: string) {
+export async function fetchInvoicesPages(query: string) { //Devuelve la cantidad de paginas 
   try {
     const count = await sql`SELECT COUNT(*)
     FROM invoices
