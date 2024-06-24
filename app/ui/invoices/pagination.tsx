@@ -1,5 +1,6 @@
 'use client';
 
+/* Server actions: permite ejecutar codigo asincrono directamente en el servidor. */
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Link from 'next/link';
