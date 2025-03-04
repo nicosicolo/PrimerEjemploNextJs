@@ -45,9 +45,12 @@ export default async function DashboardPage() {
                 />
             </div>
             <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
+                {/* Al agregar el componente Suspense para cada sección del dashboard, lo que estoy realizando es un Streaming de los componentes. */}
+                {/* Streaming es una técnica para separar una página en varios componentes y que cada uno se vaya cargando paralelamente e independientemente del resto de los componentes */}
                 {/* Al cargar información de manera asíncrona, mientras estoy esperando que se cargue la info, 
                 suspendo al componente y agrego un fallback hasta que la informacion este disponible para ser renderizada. */}
                 {/* Recordemos que todo este html se renderiza en el servidor y luego se lo envia al cliente */}
+                {/* Se pasa el data fetching a cada componente que necesite cada grupo de datos, en vez de realizar el fetch en el componente padre.  */}
                 <Suspense fallback={<RevenueChartSkeleton/>}> {/* Envolvemos renevenueChart en el componente suspense de react para el streaming html. 
                 Con suspense esperamos y va a ser asincrono que se cargue la informacion de revenue.*/}
                     <RevenueChart />
